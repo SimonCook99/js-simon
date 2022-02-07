@@ -3,20 +3,29 @@ let numberContainer = document.getElementById("number-container");
 //array che conterrà la lista dei numeri random
 let listaNumeri = [];
 
-//ciclo che aggiunge i numeri e aggiorna l'html
-for(let i = 0; i < 5; i++){
-    let numero = randomRange(1, 99);
 
+
+
+let i = 0;
+
+//ciclo while che aggiunge i 5 numeri nel vettore e aggiorna l'html
+while(i < 5){
+    let numero = randomRange(1, 99);
+    
     if(!listaNumeri.includes(numero)){
         listaNumeri.push(numero);
-    }
 
-    if(i == 4){
-        numberContainer.innerHTML += listaNumeri[i];
-    }else{
-        numberContainer.innerHTML += listaNumeri[i]+ ",";
+        if(i == 4){
+            numberContainer.innerHTML += listaNumeri[i];
+        }else{
+            numberContainer.innerHTML += listaNumeri[i]+ ",";
+        }
+
+        i++;
+
     }
 }
+
 
 console.log(listaNumeri);
 
@@ -30,6 +39,7 @@ function inserisciNumeri(){
 
     //array che conterrà i numeri che l'utente indovinerà
     let numeriIndovinati = [];
+
     for(let i = 0; i < 5; i++){
         let valore = parseInt(prompt("Inserisci un numero"));
         console.log(valore);
@@ -40,8 +50,12 @@ function inserisciNumeri(){
 
         if(listaNumeri.includes(valore)){
             numeriIndovinati.push(valore);
-            
         }
+
+        /* if(numeriIndovinati.includes(valore)){
+            alert("VALORE GIA' PRESENTE");
+        } */
+
     }
 
     console.log(numeriIndovinati);
