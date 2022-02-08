@@ -4,8 +4,6 @@ let numberContainer = document.getElementById("number-container");
 let listaNumeri = [];
 
 
-
-
 let i = 0;
 
 //ciclo while che aggiunge i 5 numeri nel vettore e aggiorna l'html
@@ -30,7 +28,7 @@ while(i < 5){
 console.log(listaNumeri);
 
 
-setTimeout(inserisciNumeri, 30000);
+setTimeout(inserisciNumeri, 3000);
 
 
 //funzione che verrà chiamata dopo i 30 secondi d'attesa
@@ -46,16 +44,16 @@ function inserisciNumeri(){
             let valore = parseInt(prompt("Inserisci un numero"));
             console.log(valore);
     
-            controllaValidità(valore);
+            //riassegno il valore qualora venga inserita una stringa
+            valore = controllaValidità(valore);
 
             //questo while controlla se il valore inserito, non sia già stato inserito in precedenza
             while(numeriIndovinati.includes(valore)){
                 valore = parseInt(prompt("VALORE GIA' PRESENTE, inserisci un alro numero"));
-                controllaValidità(valore);
+                valore = controllaValidità(valore);
             }
     
             if(listaNumeri.includes(valore)){
-                
                 
                 if(!numeriIndovinati.includes(valore)){
                     numeriIndovinati.push(valore);
@@ -90,8 +88,10 @@ function inserisciNumeri(){
 
 function controllaValidità(numero){
     while(isNaN(numero)){
-        numero = prompt("Inserisci un numero VALIDO!!!");
+        numero = parseInt(prompt("Inserisci un numero VALIDO!!!"));
     }
+
+    return numero;
 }
 
 
